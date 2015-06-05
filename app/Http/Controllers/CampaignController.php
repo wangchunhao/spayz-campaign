@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+<<<<<<< HEAD
 
 use App\Model\Campaign;
 use App\Model\Client;
@@ -8,6 +9,10 @@ use App\Model\Channel;
 use App\Model\Location;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+=======
+use App\Model\Campaign;
+use App\Model\Client;
+>>>>>>> fc735e5ce7655de35d9a0bc73b69bc7cbd685680
 
 class CampaignController extends Controller {
 
@@ -18,6 +23,7 @@ class CampaignController extends Controller {
 	 */
 	public function campaign($campaign_id)
 	{
+<<<<<<< HEAD
 // 		dd(1);
         $data = Campaign::find($campaign_id);
         if($data){
@@ -25,10 +31,15 @@ class CampaignController extends Controller {
         }else{
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
+=======
+        $data = Campaign::find($campaign_id);
+        return response()->json($data);
+>>>>>>> fc735e5ce7655de35d9a0bc73b69bc7cbd685680
 	}
     public function client($client_id)
     {
         $data = Client::find($client_id);
+<<<<<<< HEAD
    		if($data){
        		return response()->json($data);
         }else{
@@ -88,4 +99,11 @@ class CampaignController extends Controller {
     	}
     }
 
+=======
+        return response()->json($data);
+    }
+    public function keywords($campaign_id){
+        echo $campaign_id;
+    }
+>>>>>>> fc735e5ce7655de35d9a0bc73b69bc7cbd685680
 }
