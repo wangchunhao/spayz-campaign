@@ -16,7 +16,7 @@
                 <input class="form-control" type="text" name="email" placeholder="邮箱" id='email' value="{{$data['email']}}">
             </div>
             <div class="form-group">
-                <input class="form-control" type="password" name="password" placeholder="密码" id='password' value="{{$data['password']}}">
+                <input class="form-control" type="password" name="password" placeholder="密码" id='password' value="">
             </div>
             
             <button class="btn btn-primary" type="botton" id='appanto'>修改</button>

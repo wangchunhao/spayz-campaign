@@ -85,7 +85,12 @@ class CampaignAdminController extends Controller {
 		if($type == 'user'){
             $data['username'] = Request::input('username');
             $data['email'] = Request::input('email');
-            $data['password'] = Request::input('password');
+            $pwd = Request::input('password');
+            if(!empty($pwd)){
+               $data['password'] = bcrypt($pwd); 
+            }else{
+
+            }
             $user->where('id', $data['id'])->update($data);
         }else if($type == 'client'){
             $data['name'] = Request::input('name');
