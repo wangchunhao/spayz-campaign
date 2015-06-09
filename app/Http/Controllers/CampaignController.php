@@ -9,6 +9,7 @@ use App\Model\Location;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
+
 class CampaignController extends Controller {
 
 	/**
@@ -25,6 +26,11 @@ class CampaignController extends Controller {
         }else{
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
+
+
+        $data = Campaign::find($campaign_id);
+        return response()->json($data);
+
 	}
     public function client($client_id)
     {
@@ -48,6 +54,7 @@ class CampaignController extends Controller {
     	}else{
     		return response()->json(['code'=>'404','message'=>'No message']);
     	}
+    	
     }
     public function event($campaign_id){
     	$page = (Input::get('page'))?Input::get('page'):0;
@@ -62,6 +69,20 @@ class CampaignController extends Controller {
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
     	
+    
+    public function channel($campaign_id){
+    	
+    	$data = Channel::where('campaign_id','=',$campaign_id)
+    			->get();
+    	 
+    	if($data){
+    		return response()->json(['collection'=>$data]);
+    	}else{
+    		return response()->json(['code'=>'404','message'=>'No message']);
+    	}
+    	
+    }
+    
     }
     
     public function channel($campaign_id){
