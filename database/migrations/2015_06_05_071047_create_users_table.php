@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateModelCampaignsTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateModelCampaignsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('model_campaigns', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
@@ -26,7 +26,7 @@ class CreateModelCampaignsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('model_campaigns');
+		Schema::drop('users');
 	}
 
 }
