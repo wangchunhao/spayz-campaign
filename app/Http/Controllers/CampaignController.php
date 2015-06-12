@@ -44,15 +44,11 @@ class CampaignController extends Controller {
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
     }
-<<<<<<< HEAD
     
     /*
      * Keywords
      * 关键词信息获取
      */
-=======
-
->>>>>>> ddb204f83ecbba2e26db3241ce71516f900c2697
     public function keywords($campaign_id){
     	
     	$data = KeywordGroups::select(DB::raw('keyword.id,campaign_id,keyword_group.name,keyword_group.description,keyword.name as keyword,keyword.name_en,keyword.enabled'))
@@ -84,20 +80,6 @@ class CampaignController extends Controller {
         }else{
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
-    	
-    
-    public function channel($campaign_id){
-    	
-    	$data = Channel::where('campaign_id','=',$campaign_id)
-    			->get();
-    	 
-    	if($data){
-    		return response()->json(['collection'=>$data]);
-    	}else{
-    		return response()->json(['code'=>'404','message'=>'No message']);
-    	}
-    	
-    }
     
     }
     
@@ -141,18 +123,16 @@ class CampaignController extends Controller {
     public function filter_save(Request $request){
     
     	$receive = Input::all();
+    	$admin_id = empty($receive['admin_id'])?0:$receive['admin_id'];
+    	$campaign_id = empty($receive['campaign_id'])?0:$receive['campaign_id'];
+    	$type = empty($receive['type'])?'user':$receive['type'];
     	
-    	$admin_id = $receive['admin_id'];
-    	$campaign_id = $receive['campaign_id'];
-    	$name = $receive['name'];
-    	$type = $receive['type'];
-    	
-    	unset($receive['admin_id']);
-    	unset($receive['campaign_id']);
-    	unset($receive['type']);
-//    	unset($receive['created_at']);
-//    	unset($receive['updated_at']);
-//    	unset($receive['name']);
+    	if(!empty($receive['admin_id']))
+    		unset($receive['admin_id']);
+    	if(!empty($receive['campaign_id']))
+    		unset($receive['campaign_id']);
+    	if(!empty($receive['type']))
+    		unset($receive['type']);
     	
     	$filter = '';
     	foreach ($receive as $k=>$v){
@@ -170,7 +150,6 @@ class CampaignController extends Controller {
     	$data->admin_id = $admin_id;
     	$data->campaign_id = $campaign_id;
     	$data->type = $type;
-    	$data->name = $name;
     	$data->created_at = date('Y-m-d H:i:s');
     	$data['filter'] = ltrim($filter,'&');
     		
@@ -183,6 +162,8 @@ class CampaignController extends Controller {
     	}
     
     }
+    
+    
     
     /*
      * Get filter
