@@ -125,13 +125,15 @@ class CampaignController extends Controller {
     	
     	$admin_id = $receive['admin_id'];
     	$campaign_id = $receive['campaign_id'];
-    	$name = $receive['type'];
-    	$type = $receive['name'];
+    	$name = $receive['name'];
+    	$type = $receive['type'];
     	
     	unset($receive['admin_id']);
     	unset($receive['campaign_id']);
     	unset($receive['type']);
-    	unset($receive['name']);
+//    	unset($receive['created_at']);
+//    	unset($receive['updated_at']);
+//    	unset($receive['name']);
     	
     	$filter = '';
     	foreach ($receive as $k=>$v){
@@ -168,14 +170,29 @@ class CampaignController extends Controller {
      * 获取全部保存的塞选条件
      */
     public function get_filter(Request $request){
-    	
-    	$data = FilterSave::get();
-    	
+
+        $type = Input::get('type');
+    	$data = FilterSave::where("type",'=',$type)->get();
+
     	if($data){
-			return Response()->json(['collection' => $data])->setCallback($request->input('callback'));
+            foreach($data as $key=>$val){
+                $_d = $this->explodeFilter($val['filter']);
+                $_d['id'] = $val['id'];
+                $data[$key] = $_d;
+            }
+			return Response()->json($data)->setCallback($request->input('callback'));
 		}else{
 			return Response()->json(['code' => '404', 'message' => 'No Message'])->setCallback($request->input('callback'));
 		}
+    }
+    private function explodeFilter($data){
+        $data = explode("&",$data);
+        $result = array();
+        foreach($data as $val){
+            $exp = explode("=",$val);
+            $result[$exp[0]]=$exp[1];
+        }
+        return $result;
     }
 
 }
