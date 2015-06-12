@@ -7,6 +7,7 @@
 	<div class="bootstrap-admin-panel-content">
 		<form method="post" action="{{{ URL::to('/add') }}}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" id='_token'>
+            <input type="hidden" name="type" value="user">
             <div class="form-group">
                 <input class="form-control" type="text" name="username" placeholder="UserName" id='username'>
             </div>

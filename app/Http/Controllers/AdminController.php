@@ -13,7 +13,7 @@ class AdminController extends Controller {
     }
 	public function index()
 	{
-        echo "222";exit;
+//         echo "222";exit;
         return view('admin.index');
 	}
 }

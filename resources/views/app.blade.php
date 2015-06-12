@@ -7,9 +7,11 @@
 	<title>Laravel</title>
 
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
+	<!-- Bootstrap -->
+    <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../Bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+    <!-- Bootstrap Admin Theme -->
+    <link href="../Bootstrap/css/bootstrap-admin-theme.css" rel="stylesheet" media="screen">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,7 +21,7 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<!-- <nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -30,12 +32,12 @@
 				</button>
 				<a class="navbar-brand" href="#">Laravel</a>
 			</div>
-
+	
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="{{ url('/') }}">Home</a></li>
 				</ul>
-
+	
 				<ul class="nav navbar-nav navbar-right">
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">Login</a></li>
@@ -51,12 +53,12 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav> -->
 
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="../Js/jquery-2.0.0.min.js"></script>
+	<script src="../Bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

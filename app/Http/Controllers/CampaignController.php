@@ -163,7 +163,18 @@ class CampaignController extends Controller {
     
     }
     
-    
+    /*
+     * Delete filter
+     * 塞选条件删除
+     */
+    public function filter_delete(Request $request){
+    	
+    	$id = Input::get('id');
+    	$filter = FilterSave::find($id);
+    	$filter->delete();
+    	
+    	return Response()->json(['code' => '200', 'message' => 'Access'])->setCallback($request->input('callback'));
+    }
     
     /*
      * Get filter
