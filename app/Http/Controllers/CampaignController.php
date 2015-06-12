@@ -21,12 +21,14 @@ class CampaignController extends Controller {
 	 */
 	public function campaign($campaign_id)
 	{
+// 		dd(1);
         $data = Campaign::find($campaign_id);
         if($data){
        		return response()->json($data);
         }else{
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
+
 
         $data = Campaign::find($campaign_id);
         return response()->json($data);
@@ -36,18 +38,21 @@ class CampaignController extends Controller {
     public function client($client_id)
     {
         $data = Client::find($client_id);
-
    		if($data){
        		return response()->json($data);
         }else{
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
     }
+<<<<<<< HEAD
     
     /*
      * Keywords
      * 关键词信息获取
      */
+=======
+
+>>>>>>> ddb204f83ecbba2e26db3241ce71516f900c2697
     public function keywords($campaign_id){
     	
     	$data = KeywordGroups::select(DB::raw('keyword.id,campaign_id,keyword_group.name,keyword_group.description,keyword.name as keyword,keyword.name_en,keyword.enabled'))
@@ -80,6 +85,20 @@ class CampaignController extends Controller {
         	return response()->json(['code'=>'404','message'=>'No message']);
         }
     	
+    
+    public function channel($campaign_id){
+    	
+    	$data = Channel::where('campaign_id','=',$campaign_id)
+    			->get();
+    	 
+    	if($data){
+    		return response()->json(['collection'=>$data]);
+    	}else{
+    		return response()->json(['code'=>'404','message'=>'No message']);
+    	}
+    	
+    }
+    
     }
     
     public function channel($campaign_id){

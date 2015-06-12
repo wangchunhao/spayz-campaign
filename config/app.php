@@ -13,7 +13,9 @@ return [
 	|
 	*/
 
-	'debug' => env('APP_DEBUG',TRUE),
+	// 'debug' => env('APP_DEBUG'),
+	'debug' => true,
+	// 'debug' => env('APP_DEBUG',TRUE),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -144,6 +146,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+		'Zizaco\Entrust\EntrustServiceProvider',
 
 	],
 
@@ -192,6 +195,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Entrust' => 'Zizaco\Entrust\EntrustFacade',
 
 	],
 
